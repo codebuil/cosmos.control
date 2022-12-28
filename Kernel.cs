@@ -4,8 +4,7 @@ using Cosmos.System.Graphics;
 using Sys = Cosmos.System;
 using Cosmos.Debug.Kernel;
 using Point = Cosmos.System.Graphics.Point;
-
-
+using Cosmos.System.Graphics.Fonts;
 
 namespace Cosmos_Graphic_Subsytem
 {
@@ -14,8 +13,9 @@ namespace Cosmos_Graphic_Subsytem
         public int y = 0;
         public int w = 0;
         public int h = 0;
-        Boolean raised = false;
-        Pen Colors = new Pen(Color.Green);
+        public Boolean raised = false;
+        public Pen Colors = new Pen(Color.Green);
+        public String texts = "";
         public control()
         {
 
@@ -23,7 +23,11 @@ namespace Cosmos_Graphic_Subsytem
         public void draws(Canvas c) {
             Pen p = new Pen(Color.Black);
             Point pp = new Point(x,y);
+           
+            
             c.DrawRectangle(p, pp, w, h);
+            c.DrawString(texts, PCScreenFont.Default, p, pp) ;
+            
             c.Display();
 
         }    
@@ -67,6 +71,7 @@ namespace Cosmos_Graphic_Subsytem
                 rets.y = 10;
                 rets.w = 100;
                 rets.h = 100;
+                rets.texts = "hello wold...";
                 rets.draws(canvas);
 
 
